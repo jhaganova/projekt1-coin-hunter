@@ -99,7 +99,6 @@ function movePanacek(panacek, xDelta, yDelta) {
 }
 
 
-//stop disappearing in walls
 //background music on start (on 1st move?)
 
 

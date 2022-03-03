@@ -14,11 +14,11 @@ Na obrazovce se bude na náhodném místě objevovat mince a pokaždé, když k 
 Technický popis
 ---
 
-- Máme panáčka a nastavené absolutní pozicování (už připraveno v CSS) a umíme ho posouvat pomocí **top/left**.
+<!-- - Máme panáčka a nastavené absolutní pozicování (už připraveno v CSS) a umíme ho posouvat pomocí **top/left**.
 - Vytvoříme proměnné pro startovní souřadnice panáčka a umístíme ho na ně.
-- Přidáme na <body> událost **onkeydown** a budeme testovat kurzorové šipky.
-- Pro jednotlivé šipky měníme souřadnice a vždy znovu umístíme panáčka.
-- Panáček leze z obrazovky - omezíme jeho pohyb na 0 - **window.innerWidth/innerHeight**.
+- Přidáme na <body> událost **onkeydown** a budeme testovat kurzorové šipky. -->
+<!-- - Pro jednotlivé šipky měníme souřadnice a vždy znovu umístíme panáčka. -->
+<!-- - Panáček leze z obrazovky - omezíme jeho pohyb na 0 - **window.innerWidth/innerHeight**. -->
 
 - Přidáme minci (je v HTML v komentáři).
 - Na startu hry umístíme minci na náhodnou pozici.

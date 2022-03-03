@@ -15,22 +15,32 @@ var panacekWidth;
 var panacekHeight;
 var isMusicPlaying = false;
 
+var minceXPos; 
+var minceYPos;  
+var minceWidth;
+var minceHeight;
 
-// PANACEK START POSITION
+
+// PANACEK & MINCE START POSITION
 function initialize() {
 	let panacek = document.getElementById('panacek');
 	panacekWidth = panacek.clientWidth;
 	panacekHeight = panacek.clientHeight;
+
+	let mince = document.getElementById('mince');
+	minceWidth = mince.clientWidth;
+	minceHeight = mince.clientHeight;
 	// not in pixels
 
 	panacekXPos = (window.innerWidth - panacekWidth)/2;
 	panacekYPos = (window.innerHeight - panacekHeight)/2; 
 
+	minceXPos = Math.floor(Math.random() * (window.innerWidth - minceWidth));
+	minceYPos = Math.floor(Math.random() * (window.innerHeight - minceHeight));
 	
 	setElementPosition(panacek, panacekXPos, panacekYPos);
+	setElementPosition(mince, minceXPos, minceYPos);
 
-	// panacek.style.top = panacekYPos + 'px';
-	// panacek.style.left = panacekXPos + 'px';
 }
 
 
@@ -109,7 +119,8 @@ function setElementPosition(element, xPos, yPos) {
 }
 
 
-//background music on start (on 1st move?)
+
+
 
 
 

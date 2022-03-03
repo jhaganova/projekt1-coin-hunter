@@ -34,13 +34,21 @@ function initialize() {
 
 	panacekXPos = (window.innerWidth - panacekWidth)/2;
 	panacekYPos = (window.innerHeight - panacekHeight)/2; 
+	
+	setElementPosition(panacek, panacekXPos, panacekYPos);
+
+	randomizeMincePosition();
+}
+
+
+// RANDOMIZE COIN PLACEMENT
+function randomizeMincePosition() {
+	let mince = document.getElementById('mince');
 
 	minceXPos = Math.floor(Math.random() * (window.innerWidth - minceWidth));
 	minceYPos = Math.floor(Math.random() * (window.innerHeight - minceHeight));
-	
-	setElementPosition(panacek, panacekXPos, panacekYPos);
-	setElementPosition(mince, minceXPos, minceYPos);
 
+	setElementPosition(mince, minceXPos, minceYPos);
 }
 
 
@@ -110,6 +118,25 @@ function movePanacek(panacek, xDelta, yDelta) {
 
 
 	setElementPosition(panacek, panacekXPos, panacekYPos);
+
+	//COIN RANDOM PLACEMENT UPON FACEPLANT + COIN GOTCHA SOUND
+	if (
+		!(
+		panacekXPos + panacekWidth < minceXPos ||
+		minceXPos + minceWidth < panacekXPos ||
+		panacekYPos + panacekHeight < minceYPos ||
+		minceYPos + minceHeight < panacekYPos )) 
+		
+		{
+			randomizeMincePosition();
+			
+			let coinCollectSound = document.getElementById('zvukmince');
+			coinCollectSound.play();
+
+		}
+
+		
+
 }
 
 

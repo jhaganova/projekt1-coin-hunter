@@ -13,6 +13,7 @@ var panacekXPos;
 var panacekYPos;  
 var panacekWidth;
 var panacekHeight;
+var isMusicPlaying = false;
 
 
 // PANACEK START POSITION
@@ -33,10 +34,17 @@ function initialize() {
 }
 
 
-// PANACEK MOVES RIGHT LEFT UP DOWN
+// PANACEK MOVES RIGHT LEFT UP DOWN + MUSIC START
 function handleOnKeyDown(keyboardEvent) {
 	let panacek = document.getElementById('panacek');
 	console.log(keyboardEvent.key);
+
+	if (isMusicPlaying === false) {
+		let bgMusic = document.getElementById('bgmusic');
+		bgMusic.play();
+		console.log('playing music');
+		isMusicPlaying = true;
+	}
 
 
 	if (keyboardEvent.key === "ArrowDown") {
@@ -61,12 +69,8 @@ function handleOnKeyDown(keyboardEvent) {
 } 
 
 
-function setElementPosition(element, xPos, yPos) {
-	element.style.left = xPos + 'px';
-	element.style.top = yPos + 'px';
-}
 
-
+//PANACEK MOVES SOMEWHERE AND FACEPLANTS WALLS
 function movePanacek(panacek, xDelta, yDelta) {
 	let desiredXPos = panacekXPos + xDelta;
 	let desiredYPos = panacekYPos + yDelta;
@@ -96,6 +100,12 @@ function movePanacek(panacek, xDelta, yDelta) {
 
 
 	setElementPosition(panacek, panacekXPos, panacekYPos);
+}
+
+
+function setElementPosition(element, xPos, yPos) {
+	element.style.left = xPos + 'px';
+	element.style.top = yPos + 'px';
 }
 
 

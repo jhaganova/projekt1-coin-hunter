@@ -67,22 +67,22 @@ function handleOnKeyDown(keyboardEvent) {
 	}
 
 
-	if (keyboardEvent.key === "ArrowDown") {
+	if (keyboardEvent.key === "ArrowDown" || keyboardEvent.key === "s") {
 		movePanacek(panacek, 0, moveSpeed);
 		panacek.src = "obrazky/panacek.png";
 	}
 
-	else if (keyboardEvent.key === "ArrowUp") {
+	else if (keyboardEvent.key === "ArrowUp" || keyboardEvent.key === "w") {
 		movePanacek(panacek, 0, -moveSpeed);
 		panacek.src = "obrazky/panacek-nahoru.png";
 	}
 
-	else if (keyboardEvent.key === "ArrowRight") {
+	else if (keyboardEvent.key === "ArrowRight" || keyboardEvent.key === "d") {
 		movePanacek(panacek, moveSpeed, 0);
 		panacek.src = "obrazky/panacek-vpravo.png";
 	}
 
-	else if (keyboardEvent.key === "ArrowLeft") {
+	else if (keyboardEvent.key === "ArrowLeft" || keyboardEvent.key === "a") {
 		movePanacek(panacek, -moveSpeed, 0);
 		panacek.src = "obrazky/panacek-vlevo.png";
 	}

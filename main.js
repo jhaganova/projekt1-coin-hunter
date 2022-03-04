@@ -142,10 +142,9 @@ function movePanacek(panacek, xDelta, yDelta) {
 			if (scoreValue === 5) {
 				let victoryMusic = document.getElementById('zvukfanfara');
 				victoryMusic.play();
-				alert("Máš 5 bodov! Gratulujem k výhre!");
+				setTimeout(showVictoryAlert, 100);
 			} 
 		}	
-
 }
 
 
@@ -154,9 +153,6 @@ function setElementPosition(element, xPos, yPos) {
 	element.style.top = yPos + 'px';
 }
 
-
-
-
-
-// score counter
-// victory on 5 + victory sound
+function showVictoryAlert() {
+	alert("Máš 5 bodov! Gratulujem k výhre!");
+}

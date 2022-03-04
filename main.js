@@ -20,6 +20,8 @@ var minceYPos;
 var minceWidth;
 var minceHeight;
 
+var scoreValue = 0;
+
 
 // PANACEK & MINCE START POSITION
 function initialize() {
@@ -133,9 +135,16 @@ function movePanacek(panacek, xDelta, yDelta) {
 			let coinCollectSound = document.getElementById('zvukmince');
 			coinCollectSound.play();
 
-		}
+			let scoreCounter = document.getElementById('score');
+			scoreValue = scoreValue + 1;
+			scoreCounter.innerText = scoreValue;
 
-		
+			if (scoreValue === 5) {
+				let victoryMusic = document.getElementById('zvukfanfara');
+				victoryMusic.play();
+				alert("Máš 5 bodov! Gratulujem k výhre!");
+			} 
+		}	
 
 }
 
@@ -149,9 +158,5 @@ function setElementPosition(element, xPos, yPos) {
 
 
 
-
-
-//function setPanacekDirection()
-
-
-
+// score counter
+// victory on 5 + victory sound

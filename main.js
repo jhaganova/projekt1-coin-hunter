@@ -13,23 +13,45 @@ var panacekXPos;
 var panacekYPos;  
 var panacekWidth;
 var panacekHeight;
-var isMusicPlaying = false;
+var panacekDisplayStyle;
 
 var minceXPos; 
 var minceYPos;  
 var minceWidth;
 var minceHeight;
+var minceDisplayStyle;
 
 var scoreValue = 0;
 
+var isGameStarted = false;
 
-// PANACEK & MINCE START POSITION
+
+// INTRO BOX
 function initialize() {
 	let panacek = document.getElementById('panacek');
+	let mince = document.getElementById('mince');
+
+	panacekDisplayStyle = panacek.style.display;
+	minceDisplayStyle = mince.style.display;
+
+	panacek.style.display = "none";
+	mince.style.display = "none";
+}
+
+
+
+//GAME START - PANACEK & MINCE START POSITION + MUSIC START
+function gameStart() {
+	let panacek = document.getElementById('panacek');
+	let mince = document.getElementById('mince');
+
+	panacek.style.display = panacekDisplayStyle;
+	mince.style.display = minceDisplayStyle;
+
 	panacekWidth = panacek.clientWidth;
 	panacekHeight = panacek.clientHeight;
 
-	let mince = document.getElementById('mince');
+
 	minceWidth = mince.clientWidth;
 	minceHeight = mince.clientHeight;
 	// not in pixels
@@ -40,6 +62,15 @@ function initialize() {
 	setElementPosition(panacek, panacekXPos, panacekYPos);
 
 	randomizeMincePosition();
+
+	let introDiv = document.getElementById('introbox');
+	introDiv.style.display = "none";
+
+	let bgMusic = document.getElementById('bgmusic');
+	bgMusic.play();
+	console.log('playing music');
+
+	isGameStarted = true;
 }
 
 
@@ -54,17 +85,14 @@ function randomizeMincePosition() {
 }
 
 
-// PANACEK MOVES RIGHT LEFT UP DOWN + MUSIC START
+// PANACEK MOVES RIGHT LEFT UP DOWN
 function handleOnKeyDown(keyboardEvent) {
+	if (!isGameStarted) {
+		return;
+	}
+
 	let panacek = document.getElementById('panacek');
 	console.log(keyboardEvent.key);
-
-	if (isMusicPlaying === false) {
-		let bgMusic = document.getElementById('bgmusic');
-		bgMusic.play();
-		console.log('playing music');
-		isMusicPlaying = true;
-	}
 
 
 	if (keyboardEvent.key === "ArrowDown" || keyboardEvent.key === "s") {

@@ -7,9 +7,27 @@
 	<title>Coin Hunter</title>
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body onload="initialize()" onkeydown="handleOnKeyDown(event)">
+
+	<div class="introbox" id="introbox">
+		<p class="introbox__text"><b>Ovládanie:</b> pohyb šípkami a/alebo WSAD</p>
+
+		<div class="introbox__imgwrap">
+			<img src="obrazky/arrowkeys.png" class="introbox__img">
+			<img src="obrazky/wsadkeys.png" class="introbox__img">
+		</div>
+
+		<p class="introbox__text"><b>Cieľ hry:</b> získaj 5 mincí a vyhráš!</p>
+
+		<button class="introbox__button" onclick="gameStart()">OK!</button>
+	</div>
+
 	
 
 	<img id="panacek" src="obrazky/panacek.png" alt="Panáček">
@@ -19,7 +37,7 @@
 
 	<div id="score">0</div>
 
-	<audio id="bgmusic" src="zvuky/hudba.mp3" autoplay loop></audio>
+	<audio id="bgmusic" src="zvuky/hudba.mp3" preload="auto" loop></audio>
 
 	<audio id="zvukmince" src="zvuky/mince.mp3"></audio>
 

@@ -44,6 +44,20 @@ body {
 
 
 
+#soundtoggle {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	width: 38px;
+	background-color: #fff;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 999;
+}
+
+
+
+
 
 .introbox {
 	background-color: #fafafa;
@@ -78,6 +92,7 @@ body {
 	color: rgb(0, 0, 0);
 	font-family: 'Inconsolata', sans-serif;
 	font-size: 22px;
+	cursor: pointer;
 }
 
 .introbox__imgwrap {

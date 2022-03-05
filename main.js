@@ -24,18 +24,21 @@ var minceDisplayStyle;
 var scoreValue = 0;
 
 var isGameStarted = false;
+var isSoundOn = false;
 
 
 // INTRO BOX
 function initialize() {
 	let panacek = document.getElementById('panacek');
 	let mince = document.getElementById('mince');
+	let soundToggle = document.getElementById('soundtoggle');
 
 	panacekDisplayStyle = panacek.style.display;
 	minceDisplayStyle = mince.style.display;
 
 	panacek.style.display = "none";
 	mince.style.display = "none";
+	soundToggle.style.display = "none";
 }
 
 
@@ -44,9 +47,11 @@ function initialize() {
 function gameStart() {
 	let panacek = document.getElementById('panacek');
 	let mince = document.getElementById('mince');
+	let soundToggle = document.getElementById('soundtoggle');
 
 	panacek.style.display = panacekDisplayStyle;
 	mince.style.display = minceDisplayStyle;
+	soundToggle.style.display = "inline-block";
 
 	panacekWidth = panacek.clientWidth;
 	panacekHeight = panacek.clientHeight;
@@ -69,6 +74,8 @@ function gameStart() {
 	let bgMusic = document.getElementById('bgmusic');
 	bgMusic.play();
 	console.log('playing music');
+
+	isSoundOn = true;
 
 	isGameStarted = true;
 }
@@ -149,7 +156,7 @@ function movePanacek(panacek, xDelta, yDelta) {
 
 	setElementPosition(panacek, panacekXPos, panacekYPos);
 
-	//COIN RANDOM PLACEMENT UPON FACEPLANT + COIN GOTCHA SOUND
+	//COIN RANDOM PLACEMENT UPON FACEPLANT + COIN GOTCHA SOUND, VICTORY SOUND
 	if (
 		!(
 		panacekXPos + panacekWidth < minceXPos ||
@@ -160,6 +167,7 @@ function movePanacek(panacek, xDelta, yDelta) {
 		{
 			randomizeMincePosition();
 			
+			//COLLECT SOUND
 			let coinCollectSound = document.getElementById('zvukmince');
 			coinCollectSound.play();
 
@@ -167,6 +175,8 @@ function movePanacek(panacek, xDelta, yDelta) {
 			scoreValue = scoreValue + 1;
 			scoreCounter.innerText = scoreValue;
 
+
+			//VICTORY SOUND
 			if (scoreValue === 5) {
 				let victoryMusic = document.getElementById('zvukfanfara');
 				victoryMusic.play();
@@ -181,6 +191,31 @@ function setElementPosition(element, xPos, yPos) {
 	element.style.top = yPos + 'px';
 }
 
+
+//VICTORY ALERT
 function showVictoryAlert() {
 	alert("Máš 5 bodov! Gratulujem k výhre!");
+}
+
+
+
+
+// SOUND TOGGLE 
+function soundToggle() {
+	let bgMusic = document.getElementById('bgmusic');
+	let coinCollectSound = document.getElementById('zvukmince');
+	let victoryMusic = document.getElementById('zvukfanfara');
+	let soundToggle = document.getElementById('soundtoggle');
+
+	isSoundOn = !isSoundOn;
+	bgMusic.muted = !isSoundOn;
+	coinCollectSound.muted = !isSoundOn;
+	victoryMusic.muted = !isSoundOn;
+
+
+	if (!isSoundOn) {
+		soundToggle.src = "obrazky/sound-off.png";
+	} else {
+		soundToggle.src = "obrazky/sound-on.png";
+	}
 }
